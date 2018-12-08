@@ -1,0 +1,23 @@
+Sub 검색()
+Dim hnum As Integer
+Dim inpnum As Integer
+Dim tnum
+
+hnum = Worksheets("data").Cells(1, 9).Value
+
+For inpnum = 2 To 7
+    For tnum = 7 To 12
+    If IsEmpty(Worksheets("home").Cells(4, tnum)) Then
+        MsgBox Worksheets("home").Cells(3, tnum).Value + "값을 입력하세요"
+        Exit Sub
+    End If
+    Next
+    
+    Worksheets("data").Cells(hnum, inpnum) = Worksheets("home").Cells(4, inpnum + 5)
+    
+Next
+    Worksheets("home").Range("G4,H4,I4,J4,K4,L4").ClearContents
+
+MsgBox "Heap메모리입력완료"
+
+End Sub
